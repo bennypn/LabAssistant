@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/homepage"
+    tools:context=".HomepageActivity">
+
+    <ImageView
+        android:id="@+id/pinjam_img"
+        android:layout_width="208dp"
+        android:layout_height="202dp"
+        android:layout_marginTop="172dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/group_1" />
+
+    <ImageView
+        android:id="@+id/kembali_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinjam_img"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/group_2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Peminjaman"
+        android:textColor="@color/yellow_main"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/pinjam_img"
+        app:layout_constraintStart_toStartOf="@+id/pinjam_img"
+        app:layout_constraintTop_toBottomOf="@+id/pinjam_img" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Pengembalian"
+        android:textColor="@color/yellow_main"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/kembali_img"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/kembali_img"
+        app:layout_constraintTop_toBottomOf="@+id/kembali_img" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_matkul"
+    tools:context=".BarangActivity">
+
+    <CheckBox
+        android:id="@+id/multimeter_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Multimeter Digital"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.358" />
+
+    <CheckBox
+        android:id="@+id/osiloskop_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Osiloskop"
+        app:layout_constraintStart_toStartOf="@+id/multimeter_cb"
+        app:layout_constraintTop_toBottomOf="@+id/multimeter_cb" />
+
+    <CheckBox
+        android:id="@+id/frequency_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frequency Counter"
+        app:layout_constraintStart_toStartOf="@+id/osiloskop_cb"
+        app:layout_constraintTop_toBottomOf="@+id/osiloskop_cb" />
+
+    <CheckBox
+        android:id="@+id/bor_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bor Listrik"
+        app:layout_constraintStart_toStartOf="@+id/frequency_cb"
+        app:layout_constraintTop_toBottomOf="@+id/frequency_cb" />
+
+    <CheckBox
+        android:id="@+id/solder_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Solder"
+        app:layout_constraintStart_toStartOf="@+id/bor_cb"
+        app:layout_constraintTop_toBottomOf="@+id/bor_cb" />
+
+    <Button
+        android:id="@+id/barang_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.744" />
+</androidx.constraintlayout.widget.ConstraintLayout>

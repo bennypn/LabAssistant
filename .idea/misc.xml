@@ -3,14 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_barang.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_barang.xml" value="0.33" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_homepage.xml" value="0.1" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_jobsheet.xml" value="0.25" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_matkul.xml" value="0.25" />
+        <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_peminjaman.xml" value="0.25" />
+        <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_qr.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_registration.xml" value="0.22" />
         <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/item.xml" value="0.33" />
+        <entry key="..\:/Users/berli/AndroidStudioProjects/LabAssistant/app/src/main/res/layout/new_item.xml" value="0.33" />
       </map>
     </option>
   </component>

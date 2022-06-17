@@ -97,10 +97,10 @@ public class RegistrationActivity extends AppCompatActivity {
                             newuser = email.substring(0,5);
                             usernm = email.substring(0,5);
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("user").child(newuser).child("name");
-                            myRef.setValue(usernm);
-                            myRef = database.getReference("user").child(newuser).child("status");
-                            myRef.setValue(0);
+                            DatabaseReference myRef = database.getReference("user").child(newuser);
+                            myRef.child("status").setValue(0);
+                            myRef.child("matkul").setValue("Initial Matkul");
+                            myRef.child("jobsheet").setValue("Initial Jobsheet");
 
                             // hide the progress bar
                             progressbar.setVisibility(View.GONE);

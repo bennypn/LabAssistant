@@ -3,33 +3,62 @@ package com.example.labassistant;
 import static com.example.labassistant.MatkulActivity.jobsheet;
 import static com.example.labassistant.MatkulActivity.matkul;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class BarangActivity extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
-    Button btnNext;
+public class PeminjamanActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
-    toolsAdapter adapter; // Create Object of the Adapter class
+    Button btn;
+    TextView matakuliah, job, peminjaman, pengembalian;
+    pinjamToolsAdapter adapter; // Create Object of the Adapter class
     DatabaseReference mbase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_barang);
+        setContentView(R.layout.activity_peminjaman);
 
-        btnNext = findViewById(R.id.barang_btn);
         recyclerView = findViewById(R.id.toolList_rv);
+        matakuliah = findViewById(R.id.matkul_tv);
+        job = findViewById(R.id.jobsheet_tv);
+        peminjaman = findViewById(R.id.peminjaman_tv);
+        pengembalian = findViewById(R.id.pengembalian_tv);
+
+        matakuliah.setText(matkul);
+        job.setText(jobsheet);
+
+        Date c = Calendar.getInstance().getTime();
+        //System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault());
+        String pinjam = df.format(c);
+        peminjaman.setText(pinjam);
+
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, 6);// for 6 hour
+        calendar.set(Calendar.MINUTE, 0);// for 0 min
+        calendar.set(Calendar.SECOND, 0);// for 0 sec
+        System.out.println(calendar.getTime());// print 'Mon Mar 28 06:00:00 ALMT
+        pengembalian.setText(calendar.getTime().toString());
+
 
         mbase = FirebaseDatabase.getInstance().getReference("pointer").child(matkul).child(jobsheet).child("tools");
 
@@ -44,17 +73,19 @@ public class BarangActivity extends AppCompatActivity {
                 .build();
         // Connecting object of required Adapter class to
         // the Adapter class itself
-        adapter = new toolsAdapter(options);
+        adapter = new pinjamToolsAdapter(options);
         // Connecting Adapter class with the Recycler view*/
         recyclerView.setAdapter(adapter);
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i = new Intent(BarangActivity.this, QRActivity.class);
+            public void onClick(View v) {
+                Intent i = new Intent(PeminjamanActivity.this, HomepageActivity.class);
                 startActivity(i);
             }
         });
+
+
 
     }
 
@@ -73,5 +104,4 @@ public class BarangActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
 }

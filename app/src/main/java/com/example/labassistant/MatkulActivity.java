@@ -2,6 +2,7 @@ package com.example.labassistant;
 
 import static com.example.labassistant.LoginActivity.usernm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,13 +14,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MatkulActivity extends AppCompatActivity {
 
     ImageView pst, pijfo, pstr, pkr;
     protected static String matkul, jobsheet;
+    protected static Integer status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,24 @@ public class MatkulActivity extends AppCompatActivity {
         pstr = findViewById(R.id.pstr_iv);
         pijfo = findViewById(R.id.pijfo_tv);
         pkr = findViewById(R.id.pkr_iv);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("user").child(usernm).child("status");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                status = snapshot.getValue(Integer.class);
+                if(status == 1){
+                    Intent i = new Intent(MatkulActivity.this, PeminjamanActivity.class);
+                    startActivity(i);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         pst.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +107,8 @@ public class MatkulActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
 
     }
 }

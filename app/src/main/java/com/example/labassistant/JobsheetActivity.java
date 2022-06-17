@@ -1,5 +1,6 @@
 package com.example.labassistant;
 
+import static com.example.labassistant.LoginActivity.usernm;
 import static com.example.labassistant.MatkulActivity.jobsheet;
 import static com.example.labassistant.MatkulActivity.matkul;
 
@@ -38,9 +39,9 @@ public class JobsheetActivity extends AppCompatActivity {
         RadioButton job3 = (RadioButton)findViewById(R.id.rad3);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref1 = database.getReference("/matkul/"+matkul+"/1/jobsheet");
-        DatabaseReference ref2 = database.getReference("/matkul/"+matkul+"/2/jobsheet");
-        DatabaseReference ref3 = database.getReference("/matkul/"+matkul+"/3/jobsheet");
+        DatabaseReference ref1 = database.getReference("/master/"+matkul+"/1/jobsheet");
+        DatabaseReference ref2 = database.getReference("/master/"+matkul+"/2/jobsheet");
+        DatabaseReference ref3 = database.getReference("/master/"+matkul+"/3/jobsheet");
 
         radioGroup.clearCheck();
 
@@ -50,7 +51,7 @@ public class JobsheetActivity extends AppCompatActivity {
                 RadioButton radioButton = findViewById(id);
                 switch (id){
                     case R.id.rad1:
-                        jobsheet = radioButton.getText().toString() + " Telah Dipilih";
+                        jobsheet = radioButton.getText().toString();
                         Toast.makeText(getApplication(), jobsheet, Toast.LENGTH_SHORT).show();
                         
                         break;
@@ -71,6 +72,10 @@ public class JobsheetActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("user").child(usernm).child("jobsheet");
+                myRef.setValue(jobsheet);
+
                 Intent i = new Intent(JobsheetActivity.this, BarangActivity.class);
                 startActivity(i);
             }

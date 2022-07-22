@@ -79,7 +79,7 @@ public class HomepageActivity extends AppCompatActivity {
                                     .show();
                         } else {
                             Intent i = new Intent(HomepageActivity.this,
-                                    QRActivity.class);
+                                    QRReturnActivity.class);
                             startActivity(i);
                         }
                     }

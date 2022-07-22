@@ -40,6 +40,7 @@ public class PeminjamanActivity extends AppCompatActivity {
         job = findViewById(R.id.jobsheet_tv);
         peminjaman = findViewById(R.id.peminjaman_tv);
         pengembalian = findViewById(R.id.pengembalian_tv);
+        btn = findViewById(R.id.ok_btn);
 
         matakuliah.setText(matkul);
         job.setText(jobsheet);
@@ -57,7 +58,10 @@ public class PeminjamanActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, 0);// for 0 min
         calendar.set(Calendar.SECOND, 0);// for 0 sec
         System.out.println(calendar.getTime());// print 'Mon Mar 28 06:00:00 ALMT
-        pengembalian.setText(calendar.getTime().toString());
+        date = calendar.getTime();
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault());
+        String pinjam2 = df2.format(date);
+        pengembalian.setText(pinjam2);
 
 
         mbase = FirebaseDatabase.getInstance().getReference("pointer2").child(smt).child(matkul).child(jobsheet).child("tools");

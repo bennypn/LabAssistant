@@ -28,8 +28,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class QRActivity extends AppCompatActivity {
-     // Inisialisasi semua item yang tertera pada halaman scan qr code
+public class QRReturnActivity extends AppCompatActivity {
+    // Inisialisasi semua item yang tertera pada halaman scan qr code
     private ImageView image;
     protected static Integer status;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -38,7 +38,7 @@ public class QRActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qr);
+        setContentView(R.layout.activity_qrreturn);
 
         long epoch = System.currentTimeMillis();
         Date c = Calendar.getInstance().getTime();
@@ -46,7 +46,7 @@ public class QRActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault());
         String formattedDate = df.format(c);
 
-        image = findViewById(R.id.idIVQrcode);
+        image = findViewById(R.id.idIVQrcode2);
 
         String QRcode = usernm;
         new generateQrcode(image).execute(QRcode);
@@ -55,7 +55,7 @@ public class QRActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Integer value = snapshot.getValue(Integer.class);
-                if(value == 1){
+                if(value == 0){
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("user").child(usernm).child("history").child(""+epoch+"");
@@ -63,7 +63,7 @@ public class QRActivity extends AppCompatActivity {
                     //myRef.child("matkul").setValue(matkul);
                     //myRef.child("jobsheet").setValue(jobsheet);
 
-                    Intent i = new Intent(QRActivity.this, PeminjamanActivity.class);
+                    Intent i = new Intent(QRReturnActivity.this, HomepageActivity.class);
                     startActivity(i);
                 } else { }
             }

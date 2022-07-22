@@ -8,8 +8,8 @@
     tools:context=".PeminjamanActivity">
 
     <LinearLayout
-        android:layout_width="185dp"
-        android:layout_height="38dp"
+        android:layout_width="162dp"
+        android:layout_height="35dp"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,16 +27,16 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="182dp"
-        android:layout_height="41dp"
+        android:layout_width="162dp"
+        android:layout_height="35dp"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.825"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279">
+        app:layout_constraintVertical_bias="0.276">
 
         <TextView
             android:id="@+id/matkul_tv"
@@ -47,14 +47,13 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="327dp"
-        android:layout_height="242dp"
+        android:layout_width="323dp"
+        android:layout_height="228dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.508">
+        app:layout_constraintVertical_bias="0.514">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/toolsList_rc"
@@ -70,7 +69,7 @@
         android:text="@string/pinjam"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintHorizontal_bias="0.856"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.691" />

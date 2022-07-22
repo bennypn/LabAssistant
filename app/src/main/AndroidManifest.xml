@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LabAssistant">
         <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".QRReturnActivity"
             android:exported="false" />
         <activity

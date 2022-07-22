@@ -1,4 +1,4 @@
-package com.example.labassistant;
+package com.example.labassistant.model;
 
 public class Tools {
     private String toolsName;

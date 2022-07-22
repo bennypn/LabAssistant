@@ -1,5 +1,8 @@
 package com.example.labassistant;
 
+import static com.example.labassistant.HomepageActivity.jobsheet;
+import static com.example.labassistant.HomepageActivity.matkul;
+import static com.example.labassistant.HomepageActivity.smt;
 import static com.example.labassistant.LoginActivity.usernm;
 
 import android.content.Intent;
@@ -59,9 +62,11 @@ public class QRReturnActivity extends AppCompatActivity {
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("user").child(usernm).child("history").child(""+epoch+"");
-                    myRef.child("peminjaman").setValue(formattedDate);
-                    //myRef.child("matkul").setValue(matkul);
-                    //myRef.child("jobsheet").setValue(jobsheet);
+                    myRef.child("hisTanggal").setValue(formattedDate);
+                    myRef.child("hisMatkul").setValue(matkul);
+                    myRef.child("hisJobsheet").setValue(jobsheet);
+                    myRef.child("hisSemester").setValue(smt);
+                    myRef.child("hisStatus").setValue("PENGEMBALIAN");
 
                     Intent i = new Intent(QRReturnActivity.this, HomepageActivity.class);
                     startActivity(i);

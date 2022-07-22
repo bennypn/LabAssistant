@@ -1,8 +1,8 @@
 package com.example.labassistant;
 
 import static com.example.labassistant.LoginActivity.usernm;
-import static com.example.labassistant.MatkulActivity.jobsheet;
-import static com.example.labassistant.MatkulActivity.matkul;
+import static com.example.labassistant.HomepageActivity.jobsheet;
+import static com.example.labassistant.HomepageActivity.matkul;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class QRActivity extends AppCompatActivity {
-
+     // Inisialisasi semua item yang tertera pada halaman scan qr code
     ImageView image;
     protected static Integer status;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -48,7 +48,6 @@ public class QRActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault());
         String formattedDate = df.format(c);
 
-
         image = findViewById(R.id.idIVQrcode);
 
         String QRcode = usernm;
@@ -61,10 +60,10 @@ public class QRActivity extends AppCompatActivity {
                 if(value == 1){
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("user").child(usernm).child("history").child(""+epoch);
+                    DatabaseReference myRef = database.getReference("user").child(usernm).child("history").child(""+epoch+"");
                     myRef.child("peminjaman").setValue(formattedDate);
-                    myRef.child("matkul").setValue(matkul);
-                    myRef.child("jobsheet").setValue(jobsheet);
+                    //myRef.child("matkul").setValue(matkul);
+                    //myRef.child("jobsheet").setValue(jobsheet);
 
                     Intent i = new Intent(QRActivity.this, PeminjamanActivity.class);
                     startActivity(i);
@@ -76,8 +75,6 @@ public class QRActivity extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 

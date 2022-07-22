@@ -11,7 +11,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class pinjamToolsAdapter extends FirebaseRecyclerAdapter<Tools, pinjamToolsAdapter.ToolsViewholder>{
 
-    String tools;
+    private String tools;
 
     public pinjamToolsAdapter(
             @NonNull FirebaseRecyclerOptions<Tools> options)
@@ -32,7 +32,7 @@ public class pinjamToolsAdapter extends FirebaseRecyclerAdapter<Tools, pinjamToo
         // Add firstname from model class (here
         // "Coin.class")to appropriate view in Card
         // view (here "Coin.xml")
-        holder.toolstv.setText(tools);
+        holder.ntoolstv.setText(tools);
 
     }
 
@@ -55,12 +55,12 @@ public class pinjamToolsAdapter extends FirebaseRecyclerAdapter<Tools, pinjamToo
     // view (here "Coin.xml")
     class ToolsViewholder
             extends RecyclerView.ViewHolder {
-        TextView toolstv;
+        TextView ntoolstv;
         public ToolsViewholder(@NonNull View itemView)
         {
             super(itemView);
 
-            toolstv = itemView.findViewById(R.id.Tools_tv);
+            ntoolstv = itemView.findViewById(R.id.Tools_tv);
         }
     }
 

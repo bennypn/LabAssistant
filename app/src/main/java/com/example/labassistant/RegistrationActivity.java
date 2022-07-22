@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    // Inisialisasi item yang tertera
     private EditText emailTextView, passwordTextView;
     private Button Btn;
     private ProgressBar progressbar;
@@ -35,15 +36,18 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         // taking FirebaseAuth instance
+        // mengambil data dari firebase authentication
         mAuth = FirebaseAuth.getInstance();
 
         // initialising all views through id defined above
+        // inisialisasi textview dan button yang tertera
         emailTextView = findViewById(R.id.regis_email);
         passwordTextView = findViewById(R.id.passwd);
         Btn = findViewById(R.id.btnregister);
         progressbar = findViewById(R.id.progressbar);
 
         // Set on Click Listener on Registration button
+        // Mengatur fungsi klik pada tombol regis
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -60,11 +64,13 @@ public class RegistrationActivity extends AppCompatActivity {
         progressbar.setVisibility(View.VISIBLE);
 
         // Take the value of two edit texts in Strings
+        // Mengambil nilai dari 2 edit texts
         String email, password;
         email = emailTextView.getText().toString();
         password = passwordTextView.getText().toString();
 
         // Validations for input email and password
+        // Validasi data email dan password
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
                     "Please enter email!!",
@@ -116,8 +122,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             // Registration failed
                             Toast.makeText(
                                     getApplicationContext(),
-                                    "Registration failed!!"
-                                            + " Please try again later",
+                                    "Registration Failed!"
+                                            + " Please Try Again Later!",
                                     Toast.LENGTH_LONG)
                                     .show();
 

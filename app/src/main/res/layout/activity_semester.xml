@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu_matkul"
-    tools:context=".MatkulActivity">
-
+    android:background="@drawable/menu_semester"
+    tools:context=".SemesterActivity">
 
     <Button
-        android:id="@+id/matkul_btn"
+        android:id="@+id/semester_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button_main"
@@ -23,8 +22,8 @@
         app:layout_constraintVertical_bias="0.751" />
 
     <LinearLayout
-        android:layout_width="321dp"
-        android:layout_height="263dp"
+        android:layout_width="320dp"
+        android:layout_height="303dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,39 +32,43 @@
         app:layout_constraintVertical_bias="0.534">
 
         <RadioGroup
-            android:id="@+id/RadioMatkul"
+            android:id="@+id/RadioSemester"
             android:layout_width="322dp"
             android:layout_height="299dp">
 
             <RadioButton
-                android:id="@+id/mrad1"
+                android:id="@+id/srad1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Praktik Komunikasi Radio" />
+                android:text="Semester 1" />
 
             <RadioButton
-                android:id="@+id/mrad2"
+                android:id="@+id/srad2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Praktik Sistem telekomunikasi" />
+                android:text="Semester 2" />
 
             <RadioButton
-                android:id="@+id/mrad3"
+                android:id="@+id/srad3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Praktik Alat Ukur dan Pengukuran" />
+                android:text="Semester 3" />
 
             <RadioButton
-                android:id="@+id/mrad4"
+                android:id="@+id/srad4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Praktik Alat Ukur dan Pengukuran" />
+                android:text="Semester 4" />
 
             <RadioButton
-                android:id="@+id/mrad5"
+                android:id="@+id/srad5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Praktik Alat Ukur dan Pengukuran" />
+                android:text="Semester 5" />
+
         </RadioGroup>
     </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

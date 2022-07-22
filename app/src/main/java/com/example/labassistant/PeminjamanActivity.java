@@ -1,17 +1,18 @@
 package com.example.labassistant;
 
-import static com.example.labassistant.MatkulActivity.jobsheet;
-import static com.example.labassistant.MatkulActivity.matkul;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import static com.example.labassistant.HomepageActivity.jobsheet;
+import static com.example.labassistant.HomepageActivity.matkul;
+import static com.example.labassistant.HomepageActivity.smt;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -24,18 +25,17 @@ import java.util.Locale;
 
 public class PeminjamanActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    Button btn;
-    TextView matakuliah, job, peminjaman, pengembalian;
-    pinjamToolsAdapter adapter; // Create Object of the Adapter class
-    DatabaseReference mbase;
+    private Button btn;
+    private TextView matakuliah, job, peminjaman, pengembalian;
+    private pinjamToolsAdapter adapter; // Create Object of the Adapter class
+    private DatabaseReference mbase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peminjaman);
 
-        recyclerView = findViewById(R.id.toolList_rv);
+        RecyclerView recyclerView = findViewById(R.id.toolsList_rc);
         matakuliah = findViewById(R.id.matkul_tv);
         job = findViewById(R.id.jobsheet_tv);
         peminjaman = findViewById(R.id.peminjaman_tv);
@@ -60,7 +60,7 @@ public class PeminjamanActivity extends AppCompatActivity {
         pengembalian.setText(calendar.getTime().toString());
 
 
-        mbase = FirebaseDatabase.getInstance().getReference("pointer").child(matkul).child(jobsheet).child("tools");
+        mbase = FirebaseDatabase.getInstance().getReference("pointer2").child(smt).child(matkul).child(jobsheet).child("tools");
 
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this));

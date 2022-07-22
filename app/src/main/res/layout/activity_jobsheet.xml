@@ -22,40 +22,75 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.751" />
 
-    <LinearLayout
-        android:layout_width="321dp"
-        android:layout_height="263dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="333dp"
+        android:layout_height="316dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioGroup
-            android:id="@+id/RadioJobsheet"
-            android:layout_width="322dp"
-            android:layout_height="299dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/rad1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Praktik Komunikasi Radio" />
+            <RadioGroup
+                android:id="@+id/RadioJobsheet"
+                android:layout_width="322dp"
+                android:layout_height="299dp">
 
-            <RadioButton
-                android:id="@+id/rad2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Praktik Sistem telekomunikasi" />
+                <RadioButton
+                    android:id="@+id/jrad1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Komunikasi Radio" />
 
-            <RadioButton
-                android:id="@+id/rad3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Praktik Alat Ukur dan Pengukuran" />
-        </RadioGroup>
-    </LinearLayout>
+                <RadioButton
+                    android:id="@+id/jrad2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Sistem telekomunikasi" />
+
+                <RadioButton
+                    android:id="@+id/jrad3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Alat Ukur dan Pengukuran" />
+
+                <RadioButton
+                    android:id="@+id/jrad4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Komunikasi Radio" />
+
+                <RadioButton
+                    android:id="@+id/jrad5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Sistem telekomunikasi" />
+
+                <RadioButton
+                    android:id="@+id/jrad6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Alat Ukur dan Pengukuran" />
+
+                <RadioButton
+                    android:id="@+id/jrad7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Komunikasi Radio" />
+
+                <RadioButton
+                    android:id="@+id/jrad8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Praktik Sistem telekomunikasi" />
+
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

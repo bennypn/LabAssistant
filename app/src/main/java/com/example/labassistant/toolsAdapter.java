@@ -11,7 +11,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class toolsAdapter extends FirebaseRecyclerAdapter<Tools, toolsAdapter.ToolsViewholder>{
 
-    String tools;
+    private String tools;
 
     public toolsAdapter(
             @NonNull FirebaseRecyclerOptions<Tools> options)

@@ -1,5 +1,8 @@
 package com.example.labassistant;
 
+import static com.example.labassistant.HomepageActivity.matkul;
+import static com.example.labassistant.HomepageActivity.matkulId;
+import static com.example.labassistant.HomepageActivity.semester;
 import static com.example.labassistant.LoginActivity.usernm;
 
 import androidx.annotation.NonNull;
@@ -22,93 +25,175 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MatkulActivity extends AppCompatActivity {
 
-    ImageView pst, pijfo, pstr, pkr;
-    protected static String matkul, jobsheet;
-    protected static Integer status;
+    private Button btnNext2;
+    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matkul);
 
-        pst = findViewById(R.id.pst_iv);
-        pstr = findViewById(R.id.pstr_iv);
-        pijfo = findViewById(R.id.pijfo_tv);
-        pkr = findViewById(R.id.pkr_iv);
-
+        btnNext2 = findViewById(R.id.matkul_btn);
+        radioGroup = findViewById(R.id.RadioMatkul);
+        RadioButton mat1 = (RadioButton)findViewById(R.id.mrad1);
+        RadioButton mat2 = (RadioButton)findViewById(R.id.mrad2);
+        RadioButton mat3 = (RadioButton)findViewById(R.id.mrad3);
+        RadioButton mat4 = (RadioButton)findViewById(R.id.mrad4);
+        RadioButton mat5 = (RadioButton)findViewById(R.id.mrad5);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("user").child(usernm).child("status");
-        myRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference ref1 = database.getReference("/sample/semester/"+semester+"/matkul/1/matkul");
+        DatabaseReference ref2 = database.getReference("/sample/semester/"+semester+"/matkul/2/matkul");
+        DatabaseReference ref3 = database.getReference("/sample/semester/"+semester+"/matkul/3/matkul");
+        DatabaseReference ref4 = database.getReference("/sample/semester/"+semester+"/matkul/4/matkul");
+        DatabaseReference ref5 = database.getReference("/sample/semester/"+semester+"/matkul/5/matkul");
+
+        radioGroup.clearCheck();
+        // Mengirim data jobsheet ke database yang dipilih pada radio button
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                status = snapshot.getValue(Integer.class);
-                if(status == 1){
-                    Intent i = new Intent(MatkulActivity.this, PeminjamanActivity.class);
-                    startActivity(i);
+            public void onCheckedChanged(RadioGroup radioGroup, int id) {
+                RadioButton radioButton = findViewById(id);
+                switch (id){
+                    case R.id.mrad1:
+                        matkulId= "1";
+                        matkul = radioButton.getText().toString();
+                        Toast.makeText(getApplication(), matkul, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.mrad2:
+                        matkulId= "2";
+                        matkul = radioButton.getText().toString();
+                        Toast.makeText(getApplication(), matkul, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.mrad3:
+                        matkulId= "3";
+                        matkul = radioButton.getText().toString();
+                        Toast.makeText(getApplication(), matkul, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.mrad4:
+                        matkulId= "4";
+                        matkul = radioButton.getText().toString();
+                        Toast.makeText(getApplication(), matkul, Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.mrad5:
+                        matkulId= "5";
+                        matkul = radioButton.getText().toString();
+                        Toast.makeText(getApplication(), matkul, Toast.LENGTH_SHORT).show();
+
+                        break;
+                }
+            }
+        });
+
+        btnNext2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("user").child(usernm).child("matkul");
+                myRef.setValue(matkul);
+
+                Intent i = new Intent(MatkulActivity.this, JobsheetActivity.class);
+                startActivity(i);
+            }
+        });
+
+        ref1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String val1 = dataSnapshot.getValue(String.class);
+                mat1.setText(val1);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Gagal untuk membaca nilai
+            }
+        });
+
+        // Read from the database
+        // Membaca data dari database
+        ref2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String val2 = dataSnapshot.getValue(String.class);
+                if (val2 == null) {
+                    mat2.setVisibility(View.GONE);
+                } else {
+                    mat2.setText(val2);
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Gagal untuk membaca nilai
             }
         });
 
-        pst.setOnClickListener(new View.OnClickListener() {
+        // Read from the database
+        // Membaca dari database
+        ref3.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                matkul = "Praktik Sistem Telekomunikasi";
-                // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user").child(usernm).child("matkul");
-                myRef.setValue(matkul);
-                Intent i = new Intent(MatkulActivity.this, JobsheetActivity.class);
-                startActivity(i);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String val3 = dataSnapshot.getValue(String.class);
+                if (val3 == null) {
+                    mat3.setVisibility(View.GONE);
+                } else {
+                    mat3.setText(val3);
+                }
             }
-        });
 
-        pstr.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                matkul = "Praktik Sistem Transmisi";
-                // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user").child(usernm).child("matkul");
-                myRef.setValue(matkul);
-                Intent i = new Intent(MatkulActivity.this, JobsheetActivity.class);
-                startActivity(i);
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Gagal membaca nilai
             }
         });
 
-        pijfo.setOnClickListener(new View.OnClickListener() {
+        ref4.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                matkul = "Praktik Instalasi Jaringan Fiber Optik";
-                // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user").child(usernm).child("matkul");
-                myRef.setValue(matkul);
-                Intent i = new Intent(MatkulActivity.this, JobsheetActivity.class);
-                startActivity(i);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String val4 = dataSnapshot.getValue(String.class);
+                if (val4 == null) {
+                    mat4.setVisibility(View.GONE);
+                } else {
+                    mat4.setText(val4);
+                }
             }
-        });
 
-        pkr.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                matkul = "Praktik Komunikasi Radio";
-
-                // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("user").child(usernm).child("matkul");
-                myRef.setValue(matkul);
-
-                Intent i = new Intent(MatkulActivity.this, JobsheetActivity.class);
-                startActivity(i);
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Gagal untuk membaca nilai
             }
         });
 
+        // Read from the database
+        // Membaca dari database
+        ref5.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String val5 = dataSnapshot.getValue(String.class);
+                if (val5 == null) {
+                    mat5.setVisibility(View.GONE);
+                } else {
+                    mat5.setText(val5);
+                }
+            }
 
-
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                // Gagal membaca nilai
+            }
+        });
     }
 }

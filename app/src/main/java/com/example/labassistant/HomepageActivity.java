@@ -1,9 +1,6 @@
 package com.example.labassistant;
 
 import static com.example.labassistant.LoginActivity.usernm;
-import static com.example.labassistant.MatkulActivity.jobsheet;
-import static com.example.labassistant.MatkulActivity.matkul;
-import static com.example.labassistant.MatkulActivity.status;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,8 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomepageActivity extends AppCompatActivity {
-
-    ImageView pinjam, kembali;
+    protected static String semester,smt,matkul,matkulId, jobsheet,jobsheetId;
+    private ImageView pinjam, kembali;
+    private Integer stats;
+    protected static Integer status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +33,55 @@ public class HomepageActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("user").child(usernm);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                smt = snapshot.child("semester").getValue(String.class);
+                matkul = snapshot.child("matkul").getValue(String.class);
+                jobsheet = snapshot.child("jobsheet").getValue(String.class);
+                status = snapshot.child("status").getValue(Integer.class);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         pinjam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.addValueEventListener(new ValueEventListener() {
+                if(status==1){
+                    Intent i = new Intent(HomepageActivity.this,
+                            PeminjamanActivity.class);
+                    startActivity(i);
+                }else {
+                    Intent i = new Intent(HomepageActivity.this,
+                            SemesterActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
+
+        kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference myRef2 = database.getReference("user").child(usernm).child("status");
+                myRef2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        matkul = snapshot.child("matkul").getValue(String.class);
-                        jobsheet = snapshot.child("jobsheet").getValue(String.class);
-                        status = snapshot.child("status").getValue(Integer.class);
-
-                        Intent i = new Intent(HomepageActivity.this,
-                                MatkulActivity.class);
-                        startActivity(i);
+                        stats = snapshot.getValue(Integer.class);
+                        if (stats == 0) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Tidak Ada Data Pemiinjaman",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        } else {
+                            Intent i = new Intent(HomepageActivity.this,
+                                    QRActivity.class);
+                            startActivity(i);
+                        }
                     }
 
                     @Override
@@ -56,15 +90,6 @@ public class HomepageActivity extends AppCompatActivity {
                     }
                 });
 
-            }
-        });
-
-        kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(HomepageActivity.this,
-                        MainActivity.class);
-                startActivity(i);
             }
         });
     }

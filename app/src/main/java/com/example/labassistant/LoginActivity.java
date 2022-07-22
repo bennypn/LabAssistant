@@ -32,9 +32,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // taking instance of FirebaseAuth
+        // mengambil data dari authentication firebase
         mAuth = FirebaseAuth.getInstance();
 
         // initialising all views through id defined above
+        // inisialisasi semua nilai yang tertera
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.password);
         Btn = findViewById(R.id.login);
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         btnregis = findViewById(R.id.regis_btn);
 
         // Set on Click Listener on Sign-in button
+        // Mengatur fungsi klik pada tombol login
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -49,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
                 loginUserAccount();
             }
         });
-
+        // Set on Click Listener on Sign-up button
+        // Mengatur fungsi klik pada tombol regis
         btnregis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,15 +72,17 @@ public class LoginActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         // Take the value of two edit texts in Strings
+        // Mengambil nilai dari 2 edit text
         String email, password;
         email = emailTextView.getText().toString();
         password = passwordTextView.getText().toString();
         usernm = email.substring(0,5); //cut string
 
         // validations for input email and password
+        // validasi email dan password
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
+                    "Please Enter emailE",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -84,13 +90,14 @@ public class LoginActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
+                    "Please Enter Password!",
                     Toast.LENGTH_LONG)
                     .show();
             return;
         }
 
         // signin existing user
+        // login akun yang terdaftar
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                         new OnCompleteListener<AuthResult>() {
@@ -100,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(),
-                                            "Login successful!!",
+                                            "Login Successful!",
                                             Toast.LENGTH_LONG)
                                             .show();
 
@@ -119,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),
-                                            "Login failed!!",
+                                            "Login Failed!",
                                             Toast.LENGTH_LONG)
                                             .show();
 
